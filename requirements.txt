@@ -1,0 +1,2 @@
+numpy==2.1.3
+python_artnet==1.2.0
