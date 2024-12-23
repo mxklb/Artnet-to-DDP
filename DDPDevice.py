@@ -3,7 +3,25 @@ import socket
 from queue import Queue
 import threading
 import os
+import logging
 import numpy as np
+
+# Setup logging ..
+level = os.getenv('LOGLEVEL', 'INFO')
+loglevel = logging.ERROR
+if level == 'INFO':
+    loglevel = logging.INFO
+if level == 'WARNING':
+    loglevel = logging.WARNING
+if level == 'DEBUG':
+    loglevel = logging.DEBUG
+if level == 'ERROR':
+    loglevel = logging.ERROR
+logging.basicConfig(
+    format='%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s',
+    level=loglevel,
+    datefmt='%Y-%m-%d %H:%M:%S')
+logger = logging.getLogger()
 
 class DDPDevice:
     """
